@@ -1,0 +1,20 @@
+{
+    "redirects": [
+        {
+            "source": "/humillymarketing/markting",
+            "destination": "/",
+            "permanent": true
+        },
+        {
+            "source": "/humillymarketing/marketing",
+            "destination": "/",
+            "permanent": true
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
+}

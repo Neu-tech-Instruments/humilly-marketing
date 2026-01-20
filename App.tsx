@@ -15,6 +15,12 @@ const App: React.FC = () => {
   const [modalContent, setModalContent] = useState('');
 
   useEffect(() => {
+    // Legacy path redirect (Client-side fallback)
+    if (window.location.pathname.includes('/humillymarketing/markting') || window.location.pathname.includes('/humillymarketing/marketing')) {
+      window.location.replace('/');
+      return;
+    }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -47,14 +53,14 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col selection:bg-[#D71920] selection:text-white overflow-x-hidden bg-white">
       <Navbar scrolled={scrolled} onPlaceholderClick={handlePlaceholderLink} />
-      
+
       <main className="flex-grow">
         <Hero />
         <Services />
-        
+
         <section id="portfolio" className="py-32 bg-slate-50 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-100/30 rounded-full blur-[120px] animate-drift -z-10"></div>
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[120px] animate-drift -z-10" style={{animationDelay: '-5s'}}></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[120px] animate-drift -z-10" style={{ animationDelay: '-5s' }}></div>
 
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mb-20 reveal">
@@ -79,7 +85,7 @@ const App: React.FC = () => {
         <section className="bg-slate-900 py-32 text-white overflow-hidden relative">
           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-[#D71920]/20 rounded-full blur-[100px] animate-pulse"></div>
           <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-white/5 rounded-full blur-[100px] animate-drift"></div>
-          
+
           <div className="container mx-auto px-6 text-center relative z-10 reveal">
             <h2 className="text-4xl md:text-7xl font-black mb-10 max-w-5xl mx-auto leading-[0.9] tracking-tighter">
               Ready to Humanize Your <br className="hidden md:block" />
@@ -88,8 +94,8 @@ const App: React.FC = () => {
             <p className="text-xl md:text-2xl mb-12 text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
               Join dozens of world-class brands scaling their Pinterest presence with our human-first methodology.
             </p>
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               className="group inline-flex items-center gap-4 bg-[#D71920] text-white px-12 py-6 rounded-2xl font-black text-xl hover:bg-red-700 hover:shadow-[0_20px_50px_rgba(215,25,32,0.4)] hover:-translate-y-1 transition-all active:scale-95"
             >
               Request Free Strategy Audit
@@ -117,7 +123,7 @@ const App: React.FC = () => {
             <p className="text-slate-500 text-xl mb-12 font-medium leading-relaxed">
               We're currently humanizing the <span className="text-[#D71920] font-black">"{modalContent}"</span> section. Check back soon for the full story.
             </p>
-            <button 
+            <button
               onClick={() => setIsModalOpen(false)}
               className="w-full bg-slate-900 text-white py-6 rounded-3xl font-black text-xl hover:bg-[#D71920] transition-all shadow-2xl hover:shadow-red-200"
             >
