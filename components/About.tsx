@@ -10,7 +10,7 @@ const About: React.FC = () => {
                 <div className="flex flex-col md:flex-row items-center gap-16 md:gap-24">
 
                     {/* Image Side */}
-                    <div className="w-full md:w-1/2 relative reveal">
+                    <div className="w-full md:w-1/2 relative">
                         <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-red-900/10 transform transition-transform hover:scale-[1.02] duration-500 min-h-[500px] md:min-h-[600px] flex aspect-[3/4] md:aspect-auto">
                             <img
                                 src="/images/about-founder.jpg"
@@ -32,7 +32,7 @@ const About: React.FC = () => {
                     </div>
 
                     {/* Text Side */}
-                    <div className="w-full md:w-1/2 reveal">
+                    <div className="w-full md:w-1/2">
                         <h4 className="text-[#D71920] font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-3">
                             <span className="w-8 h-[2px] bg-[#D71920]"></span>
                             Our DNA
