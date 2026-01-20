@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import About from './components/About';
 import PinGallery from './components/PinGallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -13,6 +14,25 @@ const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
+  const [showAbout, setShowAbout] = useState(false);
+
+  const handleShowAbout = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (showAbout) {
+      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      setShowAbout(true);
+    }
+  };
+
+  useEffect(() => {
+    if (showAbout) {
+      // Use a small timeout to ensure the element is painted
+      setTimeout(() => {
+        document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }, [showAbout]);
 
   useEffect(() => {
     // Legacy path redirect (Client-side fallback)
@@ -52,10 +72,11 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col selection:bg-[#D71920] selection:text-white overflow-x-hidden bg-white">
-      <Navbar scrolled={scrolled} onPlaceholderClick={handlePlaceholderLink} />
+      <Navbar scrolled={scrolled} onPlaceholderClick={handlePlaceholderLink} onShowAbout={handleShowAbout} />
 
       <main className="flex-grow">
         <Hero />
+        {showAbout && <About />}
         <Services />
 
         <section id="portfolio" className="py-32 bg-slate-50 relative overflow-hidden">
@@ -107,7 +128,7 @@ const App: React.FC = () => {
         <Contact />
       </main>
 
-      <Footer onPlaceholderClick={handlePlaceholderLink} />
+      <Footer onPlaceholderClick={handlePlaceholderLink} onShowAbout={handleShowAbout} />
 
       {/* Global Transition Modal */}
       {isModalOpen && (
